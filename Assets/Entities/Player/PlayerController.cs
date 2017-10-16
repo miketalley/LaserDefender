@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public int health = 100;
+    public int lives = 3;
     public float speed = 12.0f;
     public float padding = 1f;
     public float shootDelay = 0.2f;
@@ -14,7 +16,6 @@ public class PlayerController : MonoBehaviour {
     public Sprite leftMovement;
     public GameObject ammo;
     public GameObject deathObject;
-
     private float xmin;
     private float xmax;
 
@@ -101,12 +102,14 @@ public class PlayerController : MonoBehaviour {
         Vector3 laserOrigin = transform.position;
         laserOrigin.y = laserOrigin.y + laserOffset;
         Instantiate(laser, laserOrigin, Quaternion.identity);
+        laser.GetComponent<AudioSource>().Play();
     }
 
     void Die()
     {
         Destroy(this.gameObject);
-        Instantiate(deathObject, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(deathObject, transform.position, Quaternion.identity);
+        explosion.GetComponent<AudioSource>().Play();
     }
 
 }

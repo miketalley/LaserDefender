@@ -25,12 +25,12 @@ public class SoundManager : MonoBehaviour {
     {
         if (musicIsMuted)
         {
-            musicMuteStatus.text = "Music Off";
+            musicMuteStatus.text = "music off";
             musicMuteStatus.color = Color.red;
         }
         else
         {
-            musicMuteStatus.text = "Music On";
+            musicMuteStatus.text = "music on";
             musicMuteStatus.color = Color.green;
         }
     }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212462941687283992}
   - component: {fileID: 114681076665486138}
   - component: {fileID: 60816935400631388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  lives: 3
   speed: 20
   padding: 0.5
   shootDelay: 0.2
+  laserOffset: 0.5
   customAmmoSprite: {fileID: 21300000, guid: 3ee7a2a6543bffa47aecf2f745c1d814, type: 3}
   noMovement: {fileID: 21300000, guid: ae2fb9af1cd7de246a3ebaefa35fbc0f, type: 3}
   rightMovement: {fileID: 21300000, guid: 0009efeaac3d78446a7489c476d597fb, type: 3}
@@ -105,6 +107,7 @@ MonoBehaviour:
   ammo: {fileID: 1789085487804162, guid: 59b4bdc8c6465f8458b8ded7ba9f91e6, type: 2}
   deathObject: {fileID: 1488988403066982, guid: a126543f5bc9beb4b985444dd0eda203,
     type: 2}
+  livesText: {fileID: 0}
 --- !u!212 &212462941687283992
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-    public static int enemiesRemaining = 0;
-
+    public int scoreValue = 150;
     public int health = 100;
     public int damage = 100;
     public float shotsPerSecond = 0.5f;
@@ -16,7 +15,6 @@ public class EnemyController : MonoBehaviour {
     private float laserOffset = 0.5f;
 
 	void Start () {
-        enemiesRemaining += 1;
         this.GetComponent<SpriteRenderer>().sprite = enemy;
     }
 
@@ -53,13 +51,16 @@ public class EnemyController : MonoBehaviour {
             Vector3 laserOrigin = transform.position;
             laserOrigin.y = laserOrigin.y - laserOffset;
             Instantiate(laser, laserOrigin, Quaternion.identity);
+            laser.GetComponent<AudioSource>().Play();
         }
     }
 
     void Die()
     {
+        ScoreKeeper scoreKeeper = GameObject.Find("Score").GetComponent<ScoreKeeper>();
         Destroy(this.gameObject);
-        Instantiate(deathObject, transform.position, Quaternion.identity);
-        enemiesRemaining -= 1;
+        GameObject explosion = Instantiate(deathObject, transform.position, Quaternion.identity);
+        explosion.GetComponent<AudioSource>().Play();
+        scoreKeeper.Score(scoreValue);
     }
 }

@@ -2,51 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
-    private const string LEVEL_NAME_PREFIX = "Level_";
-    private const int MAX_LEVEL = 3;
-
-    public static int currentLevel;
+    public Text tryAgain;
+    public Text quit;
 
     public void LoadLevel(string scene)
     {
+        ClearText();
         SceneManager.LoadScene(scene);
     }
 
     public void LoadScene (string scene)
     {
+        ClearText();
         SceneManager.LoadScene(scene);
     }
 
     public void StartNewGame ()
     {
-        currentLevel = 0;
-        LoadNextLevel();
+        ScoreKeeper scoreKeeper = GameObject.Find("Score").GetComponent<ScoreKeeper>();
+        scoreKeeper.score = 0;
+        LoadLevel("Game");
     }
 
-    public void Retry ()
+    public void RestartLevel()
     {
-        string nextLevel = LEVEL_NAME_PREFIX + currentLevel;
-        SceneManager.LoadScene(nextLevel);
+        LoadLevel("Game");
     }
 
-    public void LoadNextLevel ()
+    public void GameOver()
     {
-        currentLevel++;
-        
-        if (currentLevel <= MAX_LEVEL)
-        {
-            string nextLevel = LEVEL_NAME_PREFIX + currentLevel;
-            SceneManager.LoadScene(nextLevel);
-        } else
-        {
-            SceneManager.LoadScene("Win");
-        }
+        tryAgain.text = "try again";
+        quit.text = "quit";
     }
 
     public void Quit ()
     {
         Application.Quit();
+    }
+
+    public void ClearText()
+    {
+        if (tryAgain)
+        {
+            tryAgain.text = "";
+        }
+        if (quit)
+        {
+            quit.text = "";
+        }
     }
 }

@@ -141,7 +141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275.6, y: 244.8}
+  m_AnchoredPosition: {x: 189, y: 277}
   m_SizeDelta: {x: 551.2, y: 45.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346606911
@@ -453,7 +453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -465.6, y: 246.82}
+  m_AnchoredPosition: {x: -367, y: 277}
   m_SizeDelta: {x: 87.7, y: 25.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &728798152
@@ -560,7 +560,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 842973723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.176, y: 4.72, z: 0}
+  m_LocalPosition: {x: -7.57, y: 4.72, z: 0}
   m_LocalScale: {x: 1.35, y: 1.35, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -934,7 +934,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 626790248
+  randomSeed: -277799890
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4395,7 +4395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -514.7, y: 246.82}
+  m_AnchoredPosition: {x: -419, y: 277}
   m_SizeDelta: {x: 19, y: 28.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688597516
@@ -4565,7 +4565,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 579827791
+  randomSeed: 1352254567
   InitialModule:
     serializedVersion: 3
     enabled: 1

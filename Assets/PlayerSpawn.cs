@@ -12,6 +12,7 @@ public class PlayerSpawn : MonoBehaviour
     private float initialSpawnDelay = 2.0f;
     private float spawnDelay = 3.0f;
     private float delayleft;
+    private bool isPaused;
 
     void Start()
     {
@@ -24,29 +25,52 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Update()
     {
-        if (messageText.text.Length > 0)
+        if (messageText.text.Length > 0 && !isPaused)
         {
             UpdateSpawnDelay();
         }
         else
         {
-            messageText.text = "";
             if (PlayerIsDead())
             {
-                if (livesLeft > 0)
-                {
-                    livesLeft -= 1;
-                    livesText.text = livesLeft.ToString();
-                    string lifeWord = livesLeft == 1 ? " life" : " lives";
-                    string message = livesLeft > 0 ? (livesLeft.ToString() + lifeWord + " remaining!") : "last life!";
-                    messageText.text = message;
-                    delayleft = spawnDelay;
-                }
-                else
-                {
-                    GameObject.Find("LevelManager").GetComponent<LevelManager>().GameOver();
-                }
+                HandlePlayerDeath();
+            } else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePause();
             }
+        }
+    }
+
+    private void HandlePlayerDeath()
+    {
+        if (livesLeft > 0)
+        {
+            livesLeft -= 1;
+            livesText.text = livesLeft.ToString();
+            string lifeWord = livesLeft == 1 ? " life" : " lives";
+            string message = livesLeft > 0 ? (livesLeft.ToString() + lifeWord + " remaining!") : "last life!";
+            messageText.text = message;
+            delayleft = spawnDelay;
+        }
+        else
+        {
+            GameObject.Find("LevelManager").GetComponent<LevelManager>().GameOver();
+        }
+    }
+
+    private void TogglePause()
+    {
+        if (isPaused)
+        {
+            isPaused = false;
+            Time.timeScale = 1.0f;
+            messageText.text = "";
+        }
+        else
+        {
+            isPaused = true;
+            Time.timeScale = 0f;
+            messageText.text = "Paused";
         }
     }
 
@@ -58,8 +82,8 @@ public class PlayerSpawn : MonoBehaviour
         }
         else
         {
-            messageText.text = "";
             SpawnPlayer();
+            messageText.text = "";
         }
     }
 
